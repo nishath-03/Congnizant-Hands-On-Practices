@@ -1,0 +1,8 @@
+public static double calculate(double money, double rate, int years) {
+    
+  
+    if (years == 0) {
+        return money; 
+    }
+        return calculate(money + (money * rate), rate, years - 1);
+}
