@@ -1,0 +1,59 @@
+
+// common interface
+interface Document {
+    void createDoc();
+}
+
+// concrete classes
+class Word implements Document{
+    public void createDoc(){
+        System.out.println("created word doc");
+    }
+}
+
+class Pdf implements Document{
+    public void createDoc(){
+        System.out.println("created pdf doc");
+    }
+}
+
+class Excel implements Document{
+    public void createDoc(){
+        System.out.println("created excel doc");
+    }
+}
+
+// DocumentFactory
+abstract class DocumentFactory{
+ abstract Document createDocument();
+}
+
+class Wordfactory extends DocumentFactory{
+    @Override
+    Document createDocument() {
+        return new Word();
+    }
+}
+
+class Pdffactory extends DocumentFactory{
+    Document createDocument(){
+        return new Pdf();
+    }
+}
+
+class Excelfactory extends DocumentFactory{
+    Document createDocument(){
+        return new Excel();
+    }
+}
+
+class Main{
+    public static void main(String[] args) {
+        Document w = new Wordfactory().createDocument();
+        Document p = new Pdffactory().createDocument();
+        Document x = new Excelfactory().createDocument();
+        w.createDoc();
+        p.createDoc();
+        x.createDoc();
+    }
+}
