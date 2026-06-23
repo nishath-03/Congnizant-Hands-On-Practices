@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+// common interface
+interface Food {
+    String prepare();
+}
+
+// creator
+interface Foodfactory {
+    Food makeFood();
+}
+
+// concrete creators
+class Pizza implements Food{
+    public String prepare(){
+        return " Pizza is preparing ";
+    }
+}
+class Donut implements Food{
+    public String prepare() {
+        return " Donut is preparing ";
+    }
+}
+
+// sub factories
+class pizzaFactory implements Foodfactory{
+    public Food makeFood(){
+        return new Pizza();
+    }
+}
+class DonutFactory implements Foodfactory{
+    public Food makeFood(){
+        return new Donut();
+    }
+}
+class Main{
+    public static void main(String[] args) {
+
+        Foodfactory ff = new pizzaFactory();
+        Food food = ff.makeFood();
+        System.out.println(food.prepare());
+
+
+    }
+}
